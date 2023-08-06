@@ -1,0 +1,4 @@
+name: ExecSigns
+version: '${project.version}'
+main: me.andrej123456789.execsigns.ExecSign
+api-version: '1.19'

@@ -1,0 +1,4 @@
+name: ExecSigns
+version: '1.0-SNAPSHOT'
+main: me.andrej123456789.execsigns.ExecSign
+api-version: '1.19'

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="exec-signs:jar">
+    <output-path>$USER_HOME$/Downloads/Minecraft-Grad/Paper/plugins</output-path>
+    <root id="archive" name="exec-signs.jar">
+      <element id="module-output" name="exec-signs" />
+    </root>
+  </artifact>
+</component>
