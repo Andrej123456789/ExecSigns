@@ -1,5 +1,6 @@
 package me.andrej123456789.execsigns;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
@@ -7,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public final class ExecSign extends JavaPlugin implements Listener {
     @Override
@@ -55,25 +57,35 @@ public final class ExecSign extends JavaPlugin implements Listener {
                 String space = " ";
 
                 /* If first line starts with '<' and ends with '>', execute command */
-                if (lines[0].startsWith("<") && lines[0].endsWith(">")) {
-                    String remove = "<>";
-                    StringBuilder resultStringBuilder = new StringBuilder();
-
-                    for (char c : lines[0].toCharArray()) {
-                        if (remove.indexOf(c) == -1) {
-                            resultStringBuilder.append(c);
-                        }
-                    }
-
-                    String player_placeholder = "{player}";
-                    String player_name = event.getPlayer().getName();
-
-                    String command = resultStringBuilder.toString() + space + lines[1].replace(player_placeholder, player_name);
+                if (lines[0].startsWith("<") && lines[0].endsWith(">") && event.getPlayer().hasPermission("exec-signs.execute")) {
+                    String command = getCommand(event, lines, space);
                     event.getPlayer().performCommand(command);
 
                     getLogger().info("Command '" + command + "' has been executed.");
                 }
+
+                else if (lines[0].startsWith("<") && lines[0].endsWith(">") && !event.getPlayer().hasPermission("exec-signs.execute")) {
+                    String errorMessage = ChatColor.RED + "[ExecSigns] You don't have permission to execute commands on sign!" + ChatColor.RESET;
+                    event.getPlayer().sendMessage(errorMessage);
+                }
             }
         }
+    }
+
+    @NotNull
+    private static String getCommand(PlayerInteractEvent event, String[] lines, String space) {
+        String remove = "<>";
+        StringBuilder resultStringBuilder = new StringBuilder();
+
+        for (char c : lines[0].toCharArray()) {
+            if (remove.indexOf(c) == -1) {
+                resultStringBuilder.append(c);
+            }
+        }
+
+        String player_placeholder = "{player}";
+        String player_name = event.getPlayer().getName();
+
+        return (resultStringBuilder.toString() + space + lines[1].replace(player_placeholder, player_name));
     }
 }

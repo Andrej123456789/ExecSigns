@@ -2,3 +2,7 @@ name: ExecSigns
 version: '1.0-SNAPSHOT'
 main: me.andrej123456789.execsigns.ExecSign
 api-version: '1.19'
+
+permissions:
+  exec-signs.execute:
+    description: Allows players to execute commands on sign by right-clicking it

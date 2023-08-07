@@ -7,6 +7,9 @@ Version: 1.19.4+
 - First line should start with `<` and end with `>`
 - Second line are arguments for command
 
+### Permissions
+- Set `exec-signs.execute` permission in your permissions plugin
+
 ### Placeholders:
 - `{player}` - player who right clicked on sign
 
