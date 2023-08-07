@@ -3,6 +3,8 @@ version: '${project.version}'
 main: me.andrej123456789.execsigns.ExecSign
 api-version: '1.19'
 
+softdepend: [PlaceholderAPI]
+
 permissions:
   exec-signs.execute:
     description: Allows players to execute commands on sign by right-clicking it

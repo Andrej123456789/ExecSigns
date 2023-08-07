@@ -12,6 +12,7 @@ Version: 1.19.4+
 
 ### Placeholders:
 - `{player}` - player who right clicked on sign
+-  or you can use PlaceholderAPI's placeholders
 
 ## How to compile
 - Download `Minecraft Development` plugin in `IntelliJ IDEA`

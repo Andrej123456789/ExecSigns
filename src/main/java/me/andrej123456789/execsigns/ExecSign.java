@@ -1,5 +1,8 @@
 package me.andrej123456789.execsigns;
 
+import org.jetbrains.annotations.NotNull;
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -8,12 +11,22 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
+
+import me.clip.placeholderapi.PlaceholderAPI;
 
 public final class ExecSign extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         // Plugin startup logic
+
+        // Check for PlaceholderAPI
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {
+            getLogger().warning("Could not find PlaceholderAPI! This plugin is required.");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        // Register the EventListener
         getServer().getPluginManager().registerEvents(this, this);
 
         getLogger().info("Initialization of ExecSigns is done!");
@@ -86,6 +99,9 @@ public final class ExecSign extends JavaPlugin implements Listener {
         String player_placeholder = "{player}";
         String player_name = event.getPlayer().getName();
 
-        return (resultStringBuilder.toString() + space + lines[1].replace(player_placeholder, player_name));
+        String line1 = lines[1].replace(player_placeholder, player_name);
+        line1 = PlaceholderAPI.setPlaceholders(event.getPlayer(), line1);
+
+        return (resultStringBuilder.toString() + space + line1);
     }
 }
