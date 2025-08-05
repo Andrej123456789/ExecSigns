@@ -3,7 +3,7 @@ Simple Paper plugin made in Java which executes command on sign when user right 
 
 Version: 1.19.4+
 
-[v1.0.0)(https://github.com/Andrej123456789/ExecSigns/releases/tag/v1.0.0)
+[v1.0.0](https://github.com/Andrej123456789/ExecSigns/releases/tag/v1.0.0)
 
 ## How to use
 - First line should start with `<` and end with `>`
