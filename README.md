@@ -5,7 +5,7 @@ Version: 1.19.4+
 
 Dependencies: [PlaceholderAPI](https://modrinth.com/plugin/placeholderapi)
 
-[v1.0.0](https://github.com/Andrej123456789/ExecSigns/releases/tag/v1.0.0)
+[Latest release - v2.0.0](https://github.com/Andrej123456789/ExecSigns/releases/tag/v2.0.0)
 
 ## How to use
 - First line should start with `<` and end with `>`
